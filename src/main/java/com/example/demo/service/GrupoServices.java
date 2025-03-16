@@ -27,6 +27,10 @@ public class GrupoServices {
         grupo.setData_formacion(novoGrupo.getData_formacion());
         grupoRepository.save(grupo);
         return ResponseEntity.status(HttpStatus.OK).body(grupo);
+    }
 
+    public ResponseEntity borrarGrupo(Integer _id){
+        grupoRepository.deleteById(_id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
