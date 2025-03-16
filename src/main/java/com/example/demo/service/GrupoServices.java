@@ -44,5 +44,12 @@ public class GrupoServices {
         return ResponseEntity.status(HttpStatus.OK).body(listaGrupos);
     }
 
-
+    public ResponseEntity<Grupo> listarGrupo(Integer _id){
+        if(grupoRepository.findById(_id).isPresent()){
+            Grupo grupo = grupoRepository.findById(_id).get();
+            System.out.println(grupo);
+            return ResponseEntity.status(HttpStatus.OK).body(grupo);
+        }
+        return null;
+    }
 }
