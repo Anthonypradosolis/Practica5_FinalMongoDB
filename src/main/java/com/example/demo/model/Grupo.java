@@ -18,7 +18,7 @@ import java.time.LocalDate;
 public class Grupo {
 
     @Id
-    private int id;
+    private Integer id;
     private String nome;
     private String xenero;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
