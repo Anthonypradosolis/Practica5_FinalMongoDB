@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GrupoServices {
 
@@ -33,4 +35,14 @@ public class GrupoServices {
         grupoRepository.deleteById(_id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+    public ResponseEntity<List<Grupo>> listarGrupos(){
+        List<Grupo> listaGrupos = grupoRepository.findAll();
+        for(int i = 0; i >= listaGrupos.size(); i++){
+            System.out.println(listaGrupos.get(i));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(listaGrupos);
+    }
+
+
 }
