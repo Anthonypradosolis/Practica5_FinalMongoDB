@@ -2,44 +2,52 @@ package com.example.demo.controller;
 
 
 import com.example.demo.model.Album;
-import com.example.demo.repository.AlbumRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.service.AlbumServices;
+import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/album")
+@RequestMapping("/mongo/album")
 public class AlbumController {
 
-    @Autowired
-    private AlbumRepository albumRepository;
+    private final AlbumServices albumServices;
 
+    public AlbumController(AlbumServices albumServices) {
+        this.albumServices = albumServices;
+    }
+
+    @Operation(summary = "Crea un album")
     @PostMapping("/crear")
-    public Album crearAlbum(@RequestBody Album album) {
-        return albumRepository.save(album);
+    public ResponseEntity<Album> crearAlbum(@RequestBody Album album) {
+        return albumServices.crearAlbum(album);
     }
 
-    @DeleteMapping("/eliminar/{id}")
-    public void eliminarAlbum(@PathVariable String id) {
-        albumRepository.deleteById(id);
+    @Operation(summary = "Borra un album")
+    @DeleteMapping("/delete/{_id}")
+    public ResponseEntity eliminarAlbum(@PathVariable Integer _id) {
+        return albumServices.borrarAlbum(_id);
     }
 
-    @PutMapping("/actualizar/{id}")
-    public Album updateAlbum(@PathVariable String id, @RequestBody Album album) {
-
-        return albumRepository.save(album);
+    @Operation(summary = "Actualiza un album")
+    @PutMapping("/actualizar/{_id}/{_idGrupo}")
+    public ResponseEntity<Album> altualizarAlbum(@PathVariable Integer _id, @PathVariable Integer _idGrupo, @RequestBody Album novoAlbum) {
+        return albumServices.actualizarAlbum(_id, _idGrupo, novoAlbum);
     }
 
+    @Operation(summary = "Lista los albumes")
     @GetMapping("/listar")
-    public List<Album> listAlbumns(){
-        return albumRepository.findAll();
+    public ResponseEntity<List<Album>> listarAlbumnes(){
+        return albumServices.listarAlbumes();
     }
 
-    @GetMapping("/listar/{id}")
-    public Optional<Album> listAlbumns(@PathVariable String id){
-        return albumRepository.findById(id);
+    @Operation(summary = "Lista un album")
+    @GetMapping("/listar/{_id}")
+    public ResponseEntity<Album> listarAlbum(@PathVariable Integer _id){
+        return albumServices.listarAlbum(_id);
     }
 
 
