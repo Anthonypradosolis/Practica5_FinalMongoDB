@@ -53,4 +53,8 @@ public class AlbumServices {
         return ResponseEntity.status(HttpStatus.OK).body(albumList);
     }
 
+    public ResponseEntity<Album> listarAlbum(Integer _id){
+        System.out.println(albumRepository.findById(_id).get());
+        return ResponseEntity.status(HttpStatus.OK).body(albumRepository.findById(_id).get());
+    }
 }
