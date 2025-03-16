@@ -3,8 +3,10 @@ package com.example.demo.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 
@@ -12,25 +14,26 @@ import java.util.Date;
 public class Album {
 
     @Id
-    private int id;
-    private int grupoId;
+    private Integer id;
+    private Integer grupoId;
     private String titulo;
-    private Date data_lanzamento;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate data_lanzamento;
     private BigDecimal puntuacion;
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
-    public int getGrupoId() {
+    public Integer getGrupoId() {
         return grupoId;
     }
 
-    public void setGrupoId(int grupoId) {
+    public void setGrupoId(Integer grupoId) {
         this.grupoId = grupoId;
     }
 
@@ -42,11 +45,11 @@ public class Album {
         this.titulo = titulo;
     }
 
-    public Date getData_lanzamento() {
+    public LocalDate getData_lanzamento() {
         return data_lanzamento;
     }
 
-    public void setData_lanzamento(Date data_lanzamento) {
+    public void setData_lanzamento(LocalDate data_lanzamento) {
         this.data_lanzamento = data_lanzamento;
     }
 
