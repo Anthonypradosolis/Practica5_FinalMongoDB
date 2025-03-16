@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AlbumServices {
 
@@ -41,6 +43,14 @@ public class AlbumServices {
     public ResponseEntity borrarAlbum(Integer _id){
         albumRepository.deleteById(_id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    public ResponseEntity<List<Album>> listarAlbumes(){
+        List<Album> albumList = albumRepository.findAll();
+        for(int i = 0; i>= albumList.size(); i++){
+            System.out.println(albumList.get(i));
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(albumList);
     }
 
 }
