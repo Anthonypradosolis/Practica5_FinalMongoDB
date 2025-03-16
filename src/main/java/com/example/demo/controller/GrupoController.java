@@ -6,6 +6,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/mongo/grupo")
 public class GrupoController {
@@ -33,4 +35,12 @@ public class GrupoController {
     public ResponseEntity borrarGrupo(@PathVariable Integer _id){
         return grupoServices.borrarGrupo(_id);
     }
+
+    @Operation(summary = "Lista los grupos")
+    @GetMapping("/listar")
+    public ResponseEntity<List<Grupo>> listarGrupos(){
+        return grupoServices.listarGrupos();
+    }
+
+
 }
