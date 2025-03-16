@@ -7,9 +7,11 @@ import com.example.demo.Psql.repository.AlbumRepository;
 import com.example.demo.Psql.repository.GrupoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class AlbumServices {
 
     private final AlbumRepository albumRepository;

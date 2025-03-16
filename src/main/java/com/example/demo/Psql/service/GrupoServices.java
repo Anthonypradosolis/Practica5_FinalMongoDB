@@ -6,7 +6,9 @@ import com.example.demo.Psql.model.GrupoMongo;
 import com.example.demo.Psql.repository.GrupoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
+@Service
 public class GrupoServices {
 
     private final GrupoRepository grupoRepository;
