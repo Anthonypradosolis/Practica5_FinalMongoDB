@@ -27,4 +27,10 @@ public class GrupoController {
     public ResponseEntity<Grupo> actulizarGrupo(@PathVariable Integer _id,@RequestBody Grupo novoGrupo){
         return grupoServices.actulizarGrupo(_id, novoGrupo);
     }
+
+    @Operation(summary = "Borra un grupo")
+    @DeleteMapping("/borrar/{_id}")
+    public ResponseEntity borrarGrupo(@PathVariable Integer _id){
+        return grupoServices.borrarGrupo(_id);
+    }
 }
