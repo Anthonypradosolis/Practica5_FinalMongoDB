@@ -42,5 +42,9 @@ public class GrupoController {
         return grupoServices.listarGrupos();
     }
 
-
+    @Operation(summary = "Lista un grupo")
+    @GetMapping("/listar/{_id}")
+    public ResponseEntity<Grupo> listarGrupo(@PathVariable Integer _id){
+        return grupoServices.listarGrupo(_id);
+    }
 }
