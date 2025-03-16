@@ -28,7 +28,7 @@ public class AlbumServices {
 
     public ResponseEntity<Album> actualizarAlbum(Integer _id,Integer _idGrupo,Album nuevoAlbum){
         if(grupoRepository.findById(String.valueOf(_idGrupo)).isPresent()){
-            Album albumUpdate = albumRepository.findById(String.valueOf(_id)).get();
+            Album albumUpdate = albumRepository.findById(_id).get();
             albumUpdate.setTitulo(nuevoAlbum.getTitulo());
             albumUpdate.setPuntuacion(nuevoAlbum.getPuntuacion());
             albumUpdate.setData_lanzamento(nuevoAlbum.getData_lanzamento());
@@ -38,5 +38,9 @@ public class AlbumServices {
         return null;
     }
 
+    public ResponseEntity borrarAlbum(Integer _id){
+        albumRepository.deleteById(_id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
 
 }
