@@ -21,7 +21,7 @@ public class AlbumServices {
     }
 
     public ResponseEntity<Album> crearAlbum(Album album){
-        if(grupoRepository.findById(String.valueOf(Integer.valueOf(album.getGrupoId()))).isPresent()){
+        if(grupoRepository.findById(Integer.valueOf(album.getGrupoId())).isPresent()){
             albumRepository.save(album);
             return ResponseEntity.status(HttpStatus.CREATED).body(album);
         }
@@ -29,7 +29,7 @@ public class AlbumServices {
     }
 
     public ResponseEntity<Album> actualizarAlbum(Integer _id,Integer _idGrupo,Album nuevoAlbum){
-        if(grupoRepository.findById(String.valueOf(_idGrupo)).isPresent()){
+        if(grupoRepository.findById(_idGrupo).isPresent()){
             Album albumUpdate = albumRepository.findById(_id).get();
             albumUpdate.setTitulo(nuevoAlbum.getTitulo());
             albumUpdate.setPuntuacion(nuevoAlbum.getPuntuacion());
