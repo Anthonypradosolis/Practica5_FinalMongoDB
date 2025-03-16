@@ -1,8 +1,8 @@
-package com.example.demo.service;
+package com.example.demo.Mongo.service;
 
-import com.example.demo.model.Album;
-import com.example.demo.repository.AlbumRepository;
-import com.example.demo.repository.GrupoRepository;
+import com.example.demo.Mongo.model.Album;
+import com.example.demo.Mongo.repository.AlbumRepository;
+import com.example.demo.Mongo.repository.GrupoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;

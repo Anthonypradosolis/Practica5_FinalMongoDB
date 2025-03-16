@@ -1,8 +1,8 @@
-package com.example.demo.controller;
+package com.example.demo.Mongo.controller;
 
 
-import com.example.demo.model.Album;
-import com.example.demo.service.AlbumServices;
+import com.example.demo.Mongo.model.Album;
+import com.example.demo.Mongo.service.AlbumServices;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,7 +1,7 @@
-package com.example.demo.controller;
+package com.example.demo.Mongo.controller;
 
-import com.example.demo.model.Grupo;
-import com.example.demo.service.GrupoServices;
+import com.example.demo.Mongo.model.Grupo;
+import com.example.demo.Mongo.service.GrupoServices;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
