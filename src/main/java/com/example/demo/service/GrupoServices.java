@@ -19,4 +19,14 @@ public class GrupoServices {
         grupoRepository.insert(grupo);
         return ResponseEntity.status(HttpStatus.CREATED).body(grupo);
     }
+
+    public ResponseEntity<Grupo> actulizarGrupo(Integer _id, Grupo novoGrupo){
+        Grupo grupo = grupoRepository.findById(_id).get();
+        grupo.setNome(novoGrupo.getNome());
+        grupo.setXenero(novoGrupo.getXenero());
+        grupo.setData_formacion(novoGrupo.getData_formacion());
+        grupoRepository.save(grupo);
+        return ResponseEntity.status(HttpStatus.OK).body(grupo);
+
+    }
 }
