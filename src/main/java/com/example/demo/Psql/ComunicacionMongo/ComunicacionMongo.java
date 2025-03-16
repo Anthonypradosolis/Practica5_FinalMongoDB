@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-@FeignClient(url = "http://localhost:8080", name = "org.example.ComunicacionMongo")
+@FeignClient(url = "http://localhost:8080", name = "org.example.demo.Psql.ComunicacionMongo")
 public interface ComunicacionMongo {
 
     @PostMapping("/mongo/grupo/crear")
