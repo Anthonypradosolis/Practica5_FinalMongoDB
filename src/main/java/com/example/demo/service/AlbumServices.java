@@ -25,4 +25,18 @@ public class AlbumServices {
         }
         return null;
     }
+
+    public ResponseEntity<Album> actualizarAlbum(Integer _id,Integer _idGrupo,Album nuevoAlbum){
+        if(grupoRepository.findById(String.valueOf(_idGrupo)).isPresent()){
+            Album albumUpdate = albumRepository.findById(String.valueOf(_id)).get();
+            albumUpdate.setTitulo(nuevoAlbum.getTitulo());
+            albumUpdate.setPuntuacion(nuevoAlbum.getPuntuacion());
+            albumUpdate.setData_lanzamento(nuevoAlbum.getData_lanzamento());
+            albumRepository.save(albumUpdate);
+            return ResponseEntity.status(HttpStatus.OK).body(albumUpdate);
+        }
+        return null;
+    }
+
+
 }
